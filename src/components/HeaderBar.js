@@ -6,6 +6,6 @@ export default function HeaderBar(props) {
 			<nav>
 				<Link to="/">{props.title}</Link>
 			</nav>
-		</header>
+		</header>	
 	)
 }

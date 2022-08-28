@@ -8,13 +8,12 @@ export default function Event(props) {
 	const params = useParams();
 	const eventData = getEvent(params.eventId);
 	const ticketTiers = getTicketTiers(params.eventId);
-	console.table(eventData);
 
 	return (
 		<main>
 			<header>
 				<img src={eventData.image.src}
-				     alt={eventData.image.alt} 
+					alt={eventData.image.alt} 
 				/>
 				<h1>{eventData.title}</h1>
 				<time dateTime={eventData.time.dateTime}>{eventData.time.text}</time>
@@ -27,7 +26,7 @@ export default function Event(props) {
 					<h2>Tickets</h2>
 				</header>
 				
-				<TicketTierList items={ticketTiers}/>
+				<TicketTierList eventId={eventData.id} items={ticketTiers} />
 			</section>
 
 			<div className="floating-cta">

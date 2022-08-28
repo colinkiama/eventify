@@ -8,7 +8,7 @@ export default function TicketTierList(props) {
 			{
 				props.items.map(ticketTier => {
 					return (
-						<TicketTier key={ticketTier.type} tag="li" data={ticketTier} />
+						<TicketTier eventId={props.eventId} key={ticketTier.type} tag="li" data={ticketTier} />
 					);
 				})
 			}
