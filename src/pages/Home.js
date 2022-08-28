@@ -1,4 +1,5 @@
 import EventList from '../components/EventList';
+import { getEvents } from '../data';
 
 export default function Home(props) {
 	return (
@@ -9,7 +10,7 @@ export default function Home(props) {
 			<section>
 				<header>
 					<h2>Upcoming</h2>
-					<EventList/>
+					<EventList items={getEvents()}/>
 				</header>
 			</section>
 		</main>

@@ -4,7 +4,7 @@ export default function HeaderBar(props) {
 	return (
 		<header>
 			<nav>
-				<Link to="/event">{props.title}</Link>
+				<Link to="/">{props.title}</Link>
 			</nav>
 		</header>
 	)

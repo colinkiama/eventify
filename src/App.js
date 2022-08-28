@@ -12,7 +12,7 @@ class App extends React.Component {
         <HeaderBar title="Eventify"/>
         <Routes>
           <Route path="/" element={<Pages.Home/>} />
-          <Route path="event" element={<Pages.Event/>} />
+          <Route path="event/:eventId" element={<Pages.Event/>} />
           <Route path="checkout" element={<Pages.Checkout/>} />
           <Route path="confirmation" element={<Pages.OrderConfirmation/>} />
         </Routes>
