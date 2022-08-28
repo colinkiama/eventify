@@ -1,6 +1,6 @@
 import EventList from '../components/EventList';
 
-export default function EventPage(props) {
+export default function Home(props) {
 	return (
 		<main>
 			<header>

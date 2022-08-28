@@ -1,4 +1,4 @@
-export default function EventPage(props) {
+export default function Event(props) {
 	return (
 		<main>
 			<header>

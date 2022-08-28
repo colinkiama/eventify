@@ -1,4 +1,4 @@
-export default function CheckoutPage(props) {
+export default function Checkout(props) {
 	return (
 		<main>
 			<header>

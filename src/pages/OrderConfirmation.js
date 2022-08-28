@@ -1,4 +1,4 @@
-export default function OrderConfirmationPage(props) {
+export default function OrderConfirmation(props) {
 	return (
 		<main>
 			<header>

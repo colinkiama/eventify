@@ -1,20 +1,19 @@
-import logo from './logo.svg';
 import HeaderBar from './components/HeaderBar';
+import { Routes, Route, Link } from "react-router-dom";
 import * as Pages from './pages';
-
-
 import './App.css';
 
-console.log ("Event Page:", Pages.HomePage);
 
 function App() {
   return (
     <>
       <HeaderBar title="Eventify"/>
-      <Pages.HomePage/>
-      {/*<Pages.EventPage/>*/}
-      {/*<Pages.CheckoutPage/>*/}
-      {/*<Pages.OrderConfirmationPage/>*/}
+      <Routes>
+        <Route path="/" element={<Pages.Home/>} />
+        <Route path="event" element={<Pages.Event/>} />
+        <Route path="checkout" element={<Pages.Checkout/>} />
+        <Route path="confirmation" element={<Pages.OrderConfirmation/>} />
+      </Routes>
     </>
   );
 }

@@ -1,6 +1,6 @@
-import HomePage from './HomePage';
-import EventPage from './EventPage';
-import CheckoutPage from './CheckoutPage';
-import OrderConfirmationPage from './OrderConfirmationPage';
+import Home from './Home';
+import Event from './Event';
+import Checkout from './Checkout';
+import OrderConfirmation from './OrderConfirmation';
 
-export { HomePage, EventPage, CheckoutPage, OrderConfirmationPage };
+export { Home, Event, Checkout, OrderConfirmation };
