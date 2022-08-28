@@ -1,24 +1,21 @@
 import logo from './logo.svg';
+import HeaderBar from './components/HeaderBar';
+import * as Pages from './pages';
+
+
 import './App.css';
+
+console.log ("Event Page:", Pages.HomePage);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <HeaderBar title="Eventify"/>
+      <Pages.HomePage/>
+      {/*<Pages.EventPage/>*/}
+      {/*<Pages.CheckoutPage/>*/}
+      {/*<Pages.OrderConfirmationPage/>*/}
+    </>
   );
 }
 
