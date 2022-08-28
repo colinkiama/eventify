@@ -6,9 +6,7 @@ export default function TicketTier(props) {
 	const data = props.data;
 
 	function setTierQuantity(basketItems, type) {
-		console.log("Basket items:", basketItems);
 		let basketItem = basketItems.find(item => item.ticketType === type);
-		console.log("Basket Item Found:", basketItem);
 		if (!basketItem) {
 			return "0";
 		}

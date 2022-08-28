@@ -32,7 +32,7 @@ class App extends React.Component {
     // Handle changes to tiers in basket items
     console.log("Event Ticket Tier Selection Changed:", payload);
     let basketItems = this.state.basket.items;
-    let itemIndex = basketItems.findIndex((x) => x.type === payload.item.tierType);
+    let itemIndex = basketItems.findIndex((x) => x.ticketType === payload.item.ticketType);
 
     switch (payload.type) {
       case BasketChangeType.DECREMENT:
@@ -65,11 +65,12 @@ class App extends React.Component {
   }
   
   handleItemIncrement(index, payload, basketItems) {
+    console.log("")
     if (index === -1) {
       this.setState(state => ({
         basket: {
           ...state.basket,
-          items: state.basket.items.concat({
+          items: basketItems.concat({
             ...payload.item,
             quantity: 1
           })
@@ -78,6 +79,7 @@ class App extends React.Component {
 
       return;
     }
+
     const nextQuantity = basketItems[index].quantity + 1; 
 
     if (nextQuantity > 8) {
@@ -95,7 +97,6 @@ class App extends React.Component {
         items: basketItems
       }
     }));
-
   }
 
   render() {
