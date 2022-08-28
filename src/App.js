@@ -57,11 +57,24 @@ class App extends React.Component {
       this.setState(state => ({
         basket: {
           ...state.basket,
-          items: basketItems.slice(index)
+          items: basketItems.filter((_, itemIndex) => itemIndex !== index)
         }
       }));
 
+      return;
     }
+
+    basketItems[index] = {
+      ...basketItems[index], 
+      quantity: nextQuantity
+    }
+
+    this.setState(state => ({
+      basket: {
+        ...state.basket,
+        items: basketItems
+      }
+    }));
   }
   
   handleItemIncrement(index, payload, basketItems) {
