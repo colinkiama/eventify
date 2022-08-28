@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Event(props) {
 	return (
 		<main>
@@ -40,8 +42,8 @@ export default function Event(props) {
 				</ul>
 			</section>
 
-			<div class="floating-cta">
-				<a href="#">Continue To Checkout</a>
+			<div className="floating-cta">
+				<Link to="/checkout">Continue To Checkout</Link>
 			</div>
 		</main>
 	);

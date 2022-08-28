@@ -29,7 +29,7 @@ export default function Checkout(props) {
 						>
 						</img>
 						<h3>
-							<a href="#">Madeon Good Faith Live Forever</a>
+							Madeon Good Faith Live Forever
 						</h3>
 						<time dateTime="2022-10-28T19:00Z">28 August 2022 @ 19:00</time>
 						<p>London, United Kingdom</p>
@@ -48,7 +48,7 @@ export default function Checkout(props) {
 				</ul>
 			</section>
 
-			<div class="floating-cta">
+			<div className="floating-cta">
 				<div>Total: £24.99</div>
 				<button form="checkout-form" 
 						formMethod="POST"
