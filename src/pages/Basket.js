@@ -1,7 +1,8 @@
 import { getEvent, getTicketInfo } from "../data";
-import CheckoutItem from "../components/CheckoutItem";
+import BasketItem from "../components/BasketItem";
+import { Link } from 'react-router-dom';
 
-export default function Checkout(props) {
+export default function Basket(props) {
 	const itemData = {
 		event: getEvent(props.basket.eventId),
 		tickets: props.basket.items.map(x => getTicketInfo(x.eventId, x.ticketType))
@@ -19,30 +20,26 @@ export default function Checkout(props) {
 				<header>
 					<h2>Your Details</h2>
 				</header>
-
-				<form id="checkout-form">
-					<label>
-						Email:<br/>
-						<input name="email" type="email" autoComplete="email"/>
-					</label>
-				</form>
 			</section>
 			
 			<section>
 				<header>
 					<h2>Your Items</h2>
 				</header>
-				<CheckoutItem tag="li" data={itemData} />
+				<BasketItem 
+					tag="li" 
+					data={itemData}
+					canDecrement={props.basket.canIncrement}
+					canIncrement={props.basket.canIncrement}
+					setQuantity={props.basket.setTierQuantity}
+					onQuantityChange={props.basket.onQuantityChange} />
 			</section>
 
 			<div className="floating-cta">
 				<div>Total: £24.99</div>
-				<button form="checkout-form" 
-						formMethod="POST"
-						href="#"
-				>
-				Buy
-				</button>
+				<Link to="/confirmation">
+					Continue To Checkout
+				</Link>
 			</div>
 		</main>
 	);

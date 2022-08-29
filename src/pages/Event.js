@@ -12,7 +12,7 @@ export default function Event(props) {
 
 	useEffect(() => {
 		props.basket.initializeBakset(params.eventId);
-	}, []);
+	}, [props.basket, params.eventId]);
 
 	return (
 		<main>
@@ -35,7 +35,7 @@ export default function Event(props) {
 			</section>
 
 			<div className="floating-cta">
-				<Link to="/checkout">Continue To Checkout</Link>
+				<Link to="/basket">View Basket</Link>
 			</div>
 		</main>
 	);

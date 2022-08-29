@@ -1,7 +1,8 @@
 import QuantityPicker from "./QuantityPicker";
 
-export default function CheckoutItem(props) {
+export default function BasketItem(props) {
 	const data = props.data;
+	console.log("Checkout Item Props:", props);
 
 	return (
 		<div className="checkout-item">
@@ -30,7 +31,7 @@ export default function CheckoutItem(props) {
 								onChange={onValueChange}
 								canDecrement={props.canDecrement}
 								canIncrement={props.canIncrement}
-								value={props.value}
+								value={props.setQuantity(ticket)}
 								min="0"
 								max="8" />
 						</li>
