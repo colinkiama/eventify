@@ -2,12 +2,17 @@ import { Link } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 import { getEvent, getTicketTiers } from '../data';
 import TicketTierList from '../components/TicketTierList';
+import { useEffect } from 'react';
 
 
 export default function Event(props) {
 	const params = useParams();
 	const eventData = getEvent(params.eventId);
 	const ticketTiers = getTicketTiers(params.eventId);
+
+	useEffect(() => {
+		props.basket.initializeBakset(params.eventId);
+	}, []);
 
 	return (
 		<main>

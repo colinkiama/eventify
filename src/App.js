@@ -14,6 +14,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       basket: {
+        eventId: '',
         items: [],
         onItemIncrement: (item) => this.handleItemChange({
           type: 'increment',
@@ -26,9 +27,24 @@ class App extends React.Component {
         onQuantityChange: (payload) => this.handleQuantityChange(payload),
         canIncrement: (item) => this.checkIfCanIncrement(item),
         canDecrement: (item) => this.checkIfCanDecrement(item),
-        setTierQuantity: (item) => this.setTierQuantity(item)
+        setTierQuantity: (item) => this.setTierQuantity(item),
+        initializeBakset: (eventId) => this.initializeBakset(eventId),
       }
     }
+  }
+
+  initializeBakset(eventId) {
+    if (this.state.basket.eventId === eventId) {
+      return;
+    }
+    
+    this.setState(state => ({
+      basket: {
+        ...state.basket,
+        items: [],
+        eventId: eventId
+      }
+    }))
   }
 
   setTierQuantity(item) {

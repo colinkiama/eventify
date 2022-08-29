@@ -128,10 +128,10 @@ export function getTicketTiers(eventId) {
 
 
 export function getTicketInfo(eventId, type) {
-	const ticketData = getTicketTiers(eventId);
-	if (!ticketData) {
+	const ticketTiers = getTicketTiers(eventId);
+	if (!ticketTiers) {
 		return {};
 	}
 
-	return ticketData.tiers.find(tier =>  tier.type === type) ?? {};
+	return ticketTiers.find(tier =>  tier.type === type) ?? {};
 }

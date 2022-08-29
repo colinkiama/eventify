@@ -1,6 +1,14 @@
+import { getEvent, getTicketInfo } from "../data";
 import CheckoutItem from "../components/CheckoutItem";
 
 export default function Checkout(props) {
+	const itemData = {
+		event: getEvent(props.basket.eventId),
+		tickets: props.basket.items.map(x => getTicketInfo(x.eventId, x.ticketType))
+	};
+
+	console.log("Checkout item data:", itemData);
+
 	return (
 		<main>
 			<header>
@@ -24,30 +32,7 @@ export default function Checkout(props) {
 				<header>
 					<h2>Your Items</h2>
 				</header>
-				<ul>
-					<li>
-						<img src="#"
-						     alt="My Event Image"
-						>
-						</img>
-						<h3>
-							Madeon Good Faith Live Forever
-						</h3>
-						<time dateTime="2022-10-28T19:00Z">28 August 2022 @ 19:00</time>
-						<p>London, United Kingdom</p>
-
-						<ul>
-							<div>Standard</div>
-							<p>A seat in the show</p>
-							<p>£11.99</p>
-							<div className="quantity-picker">
-								<button className="decrement-button">-</button>
-								<input type="number" min="0" max="8" value="0" readOnly={true}/>
-								<button className="increment-button">+</button>
-							</div>
-						</ul>
-					</li>
-				</ul>
+				<CheckoutItem tag="li" data={itemData} />
 			</section>
 
 			<div className="floating-cta">
