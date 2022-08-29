@@ -1,5 +1,6 @@
 import React from "react";
 import { BasketContext } from "../BasketContext";
+import QuantityPicker from "./QuantityPicker";
 
 export default function TicketTier(props) {
 	const DynamicTag = props.tag ?? 'div';
@@ -21,25 +22,14 @@ export default function TicketTier(props) {
 					<div>{data.title}</div>
 					<p>{data.description}</p>
 					<p>{data.price}</p>
-					<div className="quantity-picker">
-						<button onClick={() => onItemDecrement({ eventId: props.eventId, ticketType: data.type })} 
-								className="decrement-button"
-								disabled={!canDecrement({ ticketType: data.type })}>
-							-
-						</button>
 
-						<input type="number"
-						       min="0"
-							   max="8" 
-							   value={setTierQuantity(items, data.type)} 
-							   readOnly={true} />
-
-						<button onClick={() => onItemIncrement({ eventId: props.eventId, ticketType: data.type })} 
-								className="increment-button"
-								disabled={!canIncrement({ ticketType: data.type })}>
-							+
-						</button>
-					</div>
+					<QuantityPicker onItemDecrement={() => onItemDecrement({ eventId: props.eventId, ticketType: data.type })}
+						onItemIncrement={() => onItemIncrement({ eventId: props.eventId, ticketType: data.type })}
+						canDecrement={canDecrement({ ticketType: data.type })}
+						canIncrement={canIncrement({ ticketType: data.type })}
+						value={setTierQuantity(items, data.type)}
+						min="0"
+						max="8" />
 				</DynamicTag>
 			)}
 		</BasketContext.Consumer>
