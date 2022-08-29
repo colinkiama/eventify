@@ -24,13 +24,27 @@ class App extends React.Component {
           type: 'decrement',
           item: item
         }),
+        canIncrement: (item) => this.checkIfCanIncrement(item),
+        canDecrement: (item) => this.checkIfCanDecrement(item),
       }
     }
   }
 
+  checkIfCanDecrement(item) {
+    return this.state.basket.items.findIndex(x => x.ticketType === item.ticketType) > -1;
+  }
+
+  checkIfCanIncrement(item) {
+    let index = this.state.basket.items.findIndex(x => x.ticketType === item.ticketType); 
+    if (index > -1) {
+      return this.state.basket.items[index].quantity < 8;
+    }
+
+    return true;
+  }
+
   handleItemChange(payload) {
     // Handle changes to tiers in basket items
-    console.log("Event Ticket Tier Selection Changed:", payload);
     let basketItems = this.state.basket.items;
     let itemIndex = basketItems.findIndex((x) => x.ticketType === payload.item.ticketType);
 
@@ -50,7 +64,7 @@ class App extends React.Component {
     } 
   }
 
-  handleItemDecrement(index, payload, basketItems) {
+  handleItemDecrement(index, _, basketItems) {
     const nextQuantity = basketItems[index].quantity - 1; 
 
     if (nextQuantity === 0) {
@@ -78,7 +92,6 @@ class App extends React.Component {
   }
   
   handleItemIncrement(index, payload, basketItems) {
-    console.log("")
     if (index === -1) {
       this.setState(state => ({
         basket: {
