@@ -8,31 +8,32 @@ export default function Basket(props) {
 		tickets: props.basket.items.map(x => getTicketInfo(x.eventId, x.ticketType))
 	};
 
-	console.log("Checkout item data:", itemData);
 
 	return (
 		<main>
 			<header>
-				<h1>Checkout</h1>
+				<h1>Basket</h1>
 			</header>
-
-			<section>
-				<header>
-					<h2>Your Details</h2>
-				</header>
-			</section>
 			
 			<section>
 				<header>
 					<h2>Your Items</h2>
 				</header>
-				<BasketItem 
-					tag="li" 
-					data={itemData}
-					canDecrement={props.basket.canIncrement}
-					canIncrement={props.basket.canIncrement}
-					setQuantity={props.basket.setTierQuantity}
-					onQuantityChange={props.basket.onQuantityChange} />
+				{
+					props.basket.items.length > 0 &&
+					<BasketItem 
+						tag="li" 
+						data={itemData}
+						canDecrement={props.basket.canIncrement}
+						canIncrement={props.basket.canIncrement}
+						setQuantity={props.basket.setTierQuantity}
+						onQuantityChange={props.basket.onQuantityChange} />
+				}
+
+				{
+					props.basket.items.length === 0 && 
+					<h3>Your Basket is empty</h3>
+				}				
 			</section>
 
 			<div className="floating-cta">
