@@ -26,7 +26,7 @@ export default function Event(props) {
 					<h2>Tickets</h2>
 				</header>
 				
-				<TicketTierList eventId={eventData.id} items={ticketTiers} />
+				<TicketTierList eventId={eventData.id} items={ticketTiers} itemProps={props.basket} />
 			</section>
 
 			<div className="floating-cta">

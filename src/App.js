@@ -3,7 +3,6 @@ import HeaderBar from './components/HeaderBar';
 import { Routes, Route } from "react-router-dom";
 import * as Pages from './pages';
 import './App.css';
-import { BasketContext } from './BasketContext';
 
 const BasketChangeType = {
   INCREMENT: 'increment',
@@ -24,18 +23,29 @@ class App extends React.Component {
           type: 'decrement',
           item: item
         }),
+        onQuantityChange: (payload) => this.handleQuantityChange(payload),
         canIncrement: (item) => this.checkIfCanIncrement(item),
         canDecrement: (item) => this.checkIfCanDecrement(item),
+        setTierQuantity: (item) => this.setTierQuantity(item)
       }
     }
   }
 
+  setTierQuantity(item) {
+    let basketItem = this.state.basket.items.find(x => x.ticketType === item.type);
+    if (!basketItem) {
+      return "0";
+    }
+
+    return `${basketItem.quantity}`;
+  }
+
   checkIfCanDecrement(item) {
-    return this.state.basket.items.findIndex(x => x.ticketType === item.ticketType) > -1;
+    return this.state.basket.items.findIndex(x => x.ticketType === item.type) > -1;
   }
 
   checkIfCanIncrement(item) {
-    let index = this.state.basket.items.findIndex(x => x.ticketType === item.ticketType); 
+    let index = this.state.basket.items.findIndex(x => x.ticketType === item.type); 
     if (index > -1) {
       return this.state.basket.items[index].quantity < 8;
     }
@@ -43,10 +53,10 @@ class App extends React.Component {
     return true;
   }
 
-  handleItemChange(payload) {
+  handleQuantityChange(payload) {
     // Handle changes to tiers in basket items
     let basketItems = this.state.basket.items;
-    let itemIndex = basketItems.findIndex((x) => x.ticketType === payload.item.ticketType);
+    let itemIndex = basketItems.findIndex((x) => x.ticketType === payload.item.type);
 
     switch (payload.type) {
       case BasketChangeType.DECREMENT:
@@ -97,7 +107,8 @@ class App extends React.Component {
         basket: {
           ...state.basket,
           items: basketItems.concat({
-            ...payload.item,
+            ticketType: payload.item.type,
+            eventId: payload.item.eventId,
             quantity: 1
           })
         }
@@ -127,15 +138,15 @@ class App extends React.Component {
 
   render() {
     return (
-      <BasketContext.Provider value={this.state.basket}>
+      <>
         <HeaderBar title="Eventify" />
         <Routes>
           <Route path="/" element={<Pages.Home />} />
-          <Route path="event/:eventId" element={<Pages.Event />} />
-          <Route path="checkout" element={<Pages.Checkout />} />
+          <Route path="event/:eventId" element={<Pages.Event basket={this.state.basket} />} />
+          <Route path="checkout" element={<Pages.Checkout basket={this.state.basket} />}  />
           <Route path="confirmation" element={<Pages.OrderConfirmation />} />
         </Routes>
-      </BasketContext.Provider>
+      </>
     )
   }
 }

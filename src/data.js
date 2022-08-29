@@ -49,12 +49,14 @@ let tickets = [
 		tiers: [
 			{
 				type: 'standard',
+				eventId: '0',
 				title: 'Standard',
 				price: '£11.99',
 				description: 'A seat with a decent view'
 			},
 			{
 				type: 'premium',
+				eventId: '0',
 				title: 'Premium',
 				price: '£24.99',
 				description: 'A seat near or at the front row'
@@ -66,12 +68,14 @@ let tickets = [
 		tiers: [
 			{
 				type: 'standard',
+				eventId: '1',
 				title: 'Standard',
 				price: '£9.99',
 				description: 'A seat with a decent view'
 			},
 			{
 				type: 'premium',
+				eventId: '1',
 				title: 'Premium',
 				price: '£14.99',
 				description: 'A seat near or at the front row'
@@ -83,12 +87,14 @@ let tickets = [
 		tiers: [
 			{
 				type: 'standing',
+				eventId: '2',
 				title: 'Standing',
 				price: '£4.99',
 				description: 'Gain entry with no seating'
 			},
 			{
 				type: 'standard',
+				eventId: '2',
 				title: 'Standard',
 				price: '£14.99',
 				description: 'A seat with a decent view'

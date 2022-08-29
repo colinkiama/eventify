@@ -1,7 +1,7 @@
 export default function QuantityPicker(props) {
 	return (
 		<div className="quantity-picker">
-			<button onClick={() => props.onItemDecrement()} 
+			<button onClick={() => props.onChange('decrement')} 
 				className="decrement-button"
 				disabled={!props.canDecrement}>
 				-
@@ -13,7 +13,7 @@ export default function QuantityPicker(props) {
 				value={props.value} 
 				readOnly={true} />
 
-			<button onClick={() => props.onItemIncrement()} 
+			<button onClick={() => props.onChange('increment')} 
 				className="increment-button"
 				disabled={!props.canIncrement}>
 				+

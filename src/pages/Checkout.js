@@ -1,3 +1,5 @@
+import CheckoutItem from "../components/CheckoutItem";
+
 export default function Checkout(props) {
 	return (
 		<main>

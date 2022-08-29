@@ -10,9 +10,7 @@ export default function Event(props) {
 		<DynamicTag className="event">
 			<Link to={linkDestination}>
 				<img src={data.image.src}
-				     alt={data.image.alt}
-				>
-				</img>
+				     alt={data.image.alt} />
 			</Link>
 			<h3>
 				<Link to={linkDestination}>{data.title}</Link>
